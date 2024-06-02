@@ -8,6 +8,7 @@
 import SwiftUI
 
 struct MainScreen: View {
+    var y = 0
     var body: some View {
         TabView {
             MainView()
@@ -27,14 +28,17 @@ struct MainScreen: View {
                 }
         }
         .overlay {
-            Text("+")
-                .font(.system(size: 30, weight: .bold))
-                .foregroundStyle(.white)
-                .padding(.bottom, 5)
-                .frame(width: 44, height: 44)
-                .background(Color("ButtonColor"))
-                .clipShape(Circle())
-                .position(x: UIScreen.main.bounds.width/2, y: UIScreen.main.bounds.height - 120)
+            VStack {
+                Spacer()
+                Text("+")
+                    .font(.system(size: 30, weight: .bold))
+                    .foregroundStyle(.white)
+                    .padding(.bottom, 5)
+                    .frame(width: 44, height: 44)
+                    .background(Color("ButtonColor"))
+                    .clipShape(Circle())
+            }
+            .ignoresSafeArea(.keyboard) // Це дозволяє основному вмісту ігнорувати клавіатуру
         }
         .tint(.red)
         .navigationBarBackButtonHidden(true)
